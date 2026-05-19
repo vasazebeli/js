@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный финансовый учет</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Личный финансовый учет</h1>
+
+        <!-- Шаг 6 & 8: Форма и Баланс -->
+        <div class="balance-container">
+            <h3>Текущий баланс: <span id="total-balance">0.00</span> MDL</h3>
+        </div>
+
+        <form id="transaction-form" class="transaction-form">
+            <div class="form-group">
+                <label for="amount">Сумма (положительная — доход, отрицательная — расход):</label>
+                <input type="number" id="amount" step="0.01" placeholder="Например: 150.50 или -50">
+                <span class="error-message" id="amount-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Категория:</label>
+                <select id="category">
+                    <option value="">Выберите категорию</option>
+                    <option value="Продукты">Продукты</option>
+                    <option value="Зарплата">Зарплата</option>
+                    <option value="Развлечения">Развлечения</option>
+                    <option value="Коммунальные">Коммунальные</option>
+                    <option value="Другое">Другое</option>
+                </select>
+                <span class="error-message" id="category-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Описание:</label>
+                <textarea id="description" placeholder="Введите описание транзакции..."></textarea>
+                <span class="error-message" id="description-error"></span>
+            </div>
+
+            <button type="submit">Добавить транзакцию</button>
+        </form>
+
+        <!-- Шаг 3: Таблица транзакций -->
+        <h2>История транзакций</h2>
+        <div class="table-wrapper">
+            <table id="transactions-table">
+                <thead>
+                    <tr>
+                        <th>Дата и время</th>
+                        <th>Категория</th>
+                        <th>Краткое описание</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody id="transactions-body">
+                    <!-- Сюда будут динамически добавляться строки -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Шаг 7: Полное отображение транзакции -->
+        <div id="details-block" class="details-block hidden">
+            <h3>Детальная информация</h3>
+            <p><strong>ID:</strong> <span id="detail-id"></span></p>
+            <p><strong>Дата:</strong> <span id="detail-date"></span></p>
+            <p><strong>Сумма:</strong> <span id="detail-amount"></span></p>
+            <p><strong>Категория:</strong> <span id="detail-category"></span></p>
+            <p><strong>Полное описание:</strong></p>
+            <p id="detail-description" class="detail-description-text"></p>
+        </div>
+    </div>
+
+    <!-- Подключение основного модуля -->
+    <script type="module" src="src/index.js"></script>
+</body>
+</html>
